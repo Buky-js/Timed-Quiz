@@ -9,66 +9,80 @@ var questionBox = document.querySelector(".question-box");
 var startBox = document.querySelector(".start-box");
 var quizBox = document.querySelector(".quiz-box");
 var quizQuestion = document.querySelector(".quiz-question");
+var options;
 
 var questions = [
-    {question: "Which is not a rainbow color?",
-    option1:"red",
-    option2:"black",
-    option3: "orange",
-    option4: "yellow",
-    answer: "black"
-    
+    {
+        question: "Which is not a rainbow color?",
+        options: [
+            "red",
+            "black",
+            "orange",
+            "yellow"
+        ],
+        answer: "black"
     },
-    {question: "What does USA mean?",
-    option1:  "Unity Speaks Again",
-    option2: "Umbrella State in America",
-    option3:  "United States of America",
-    option4: "Unspoken Sayings of America",
-    answer: "United States of America",
-    
+    {
+        question: "What does USA mean?",
+        options: [
+            "Unity Speaks Again",
+            "Umbrella State in America",
+            "United States of America",
+            "Unspoken Sayings of America"
+        ],
+        answer: "United States of America"
+
     },
-    {question: "What season do we have in January",
-   
-    option1: "summer",
-    option2: "winter",
-    option3: "spring",
-    option4:"fall",
-    answer: "winter"
-    
+    {
+        question: "What season do we have in January",
+        options:[
+            "summer",
+            "winter",
+            "spring",
+            "fall"
+        ],
+       answer: "winter"
+
     },
-    {question: "Which is not a province in Canada?",
-    option1: "New Brunswick",
-    option2: "Manitoba",
-    option3: "Ohio",
-    option4: "Saskatchewan",
-    answer: "Ohio"
-    
+    {
+        question: "Which is not a province in Canada?",
+        options: [
+            "New Brunswick",
+            "Manitoba",
+            "Ohio",
+            "Saskatchewan"
+        ],
+        answer: "Ohio"
+       
     },
-    {question: "Which animal is the fastest?",
-    option1:  "cheetah",
-    option2: "lion",
-    option3: "giraffe",
-    option4: "horse",
-    answer: "cheetah",
-    
+    {
+        question: "Which animal is the fastest?",
+        options: [
+            "cheetah",
+            "lion",
+            "giraffe",
+            "horse"
+        ],
+       answer: "cheetah"
+
     }
 ]
 
-function setTimer(){
-    var counter = setInterval(function(){
+function setTimer() {
+    var counter = setInterval(function () {
         timeLeft--;
         time.textContent = timeLeft;
-        if(timeLeft===0){
-        clearInterval(counter);
+        if (timeLeft === 0) {
+            clearInterval(counter);
         }
 
     }, 1000);
 }
 var questionIndex = 0;
-function displayQuestion(questionIndex){
+function displayQuestion(questionIndex) {
     startBox.style.display = "none";
     // classList.add("hide");
-    
+
     questionBox.style.display = "block";
     questionBox.appendChild(highscore);
     questionBox.appendChild(timer);
@@ -78,18 +92,40 @@ function displayQuestion(questionIndex){
     firstQuestion.textContent = questions[questionIndex].question;
 }
 
-function displayOptions(){
-    var options = document.createElement("div");
+function displayOptions() {
+   
+
+    options = document.createElement("div");
     options.setAttribute("class", "options");
     questionBox.appendChild(options);
+
+for(var i = 0; i<4; i++){
     var firstChoice = document.createElement("button");
     firstChoice.setAttribute("class", "buttons");
     options.appendChild(firstChoice);
-    firstChoice.innerHTML = "blue";
-//     option.textContent = questions[questionIndex].option1;
+    firstChoice.innerHTML = questions[questionIndex].options[i];
+}
+options = document.querySelector(".options");
+var allOptions = options.querySelectorAll(".buttons");
+console.log(allOptions[1]);
+   for(var i=0; i<allOptions.length; i++){
+        // console.log(allOptions[i]);
+        allOptions[i].addEventListener("click", function(event){
+           
+            if(event.target.textContent == questions[questionIndex].answer){
+                alert("correct!");
+            }
+        });
+        
+    }
+
+    //     option.textContent = questions[questionIndex].option1;
 }
 
-
+function selectAnswer(){
+   
+    // console.log("Hello");
+}
 // var questionEl = document.createElement("div");
 // questionEl.classList.add("que-text");
 // startBox.appendChild(questionEl);
@@ -98,7 +134,7 @@ function displayOptions(){
 // }
 
 btn.addEventListener("click", () => {
-setTimer();
-displayQuestion(0);
-displayOptions();
+    setTimer();
+    displayQuestion(0);
+    displayOptions();
 });
