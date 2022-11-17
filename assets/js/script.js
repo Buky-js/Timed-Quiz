@@ -8,6 +8,7 @@ var btn = document.querySelector(".btn");
 var questionBox = document.querySelector(".question-box");
 var startBox = document.querySelector(".start-box");
 var quizBox = document.querySelector(".quiz-box");
+var quizQuestion = document.querySelector(".quiz-question");
 
 var questions = [
     {question: "Which is not a rainbow color?",
@@ -62,20 +63,29 @@ function setTimer(){
         }
 
     }, 1000);
-
-startBox.style.display = "none";
-// classList.add("hide");
-
-questionBox.style.display = "block";
-questionBox.appendChild(highscore);
-questionBox.appendChild(timer);
-var firstQuestion = document.createElement("div");
-firstQuestion.setAttribute("class", "quiz-question");
-questionBox.appendChild(firstQuestion);
-firstQuestion.textContent = questions[0].question;
-
-
 }
+var questionIndex = 0;
+function displayQuestion(questionIndex){
+    startBox.style.display = "none";
+    // classList.add("hide");
+    
+    questionBox.style.display = "block";
+    questionBox.appendChild(highscore);
+    questionBox.appendChild(timer);
+    // var firstQuestion = document.createElement("div");
+    // firstQuestion.setAttribute("class", "quiz-question");
+    // questionBox.appendChild(firstQuestion);
+    quizQuestion.textContent = questions[questionIndex].question;
+}
+
+function displayOptions(){
+    var option = document.createElement("button");
+    option.setAttribute("class", "options");
+    questionBox.appendChild(option);
+    option.textContent = questions[questionIndex].option1;
+}
+
+
 // var questionEl = document.createElement("div");
 // questionEl.classList.add("que-text");
 // startBox.appendChild(questionEl);
@@ -83,4 +93,8 @@ firstQuestion.textContent = questions[0].question;
 // questionEl.textContent = questionOne;
 // }
 
-btn.addEventListener("click", setTimer);
+btn.addEventListener("click", () => {
+setTimer();
+displayQuestion(0);
+displayOptions();
+});

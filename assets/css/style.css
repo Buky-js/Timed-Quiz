@@ -37,7 +37,7 @@ display: none;
 }
 .quiz-question{
     width: 800px;
-    margin: 
+    
 }
 .instruction{
     width: 800px;
@@ -57,4 +57,7 @@ display: none;
     text-align: center;
     padding-top: 150px;
     font-size: 50px;
+}
+.option-list{
+
 }
