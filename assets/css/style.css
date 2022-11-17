@@ -4,7 +4,7 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     /* max-width: 100%; */
 }
-.start-box{
+.start-box, .question-box{
     
   
     width: 1200px ;
@@ -13,13 +13,8 @@
     margin-top: 100px;
     border-radius: 20px;
 }
-.questions-box{
-    
-  
-    width: 1200px ;
-    height: 500px;
-    
-    margin-top: 100px;
+.question-box{
+display: none;
     
 }
 .highscore{
@@ -32,13 +27,17 @@
     padding: 20px;
     font-size: 20px;
 }
-.quiz-box, .que-text{
+.quiz-box, .quiz-question{
     text-align: center;
     padding-top: 100px;
 }
-.quiz-title{
+.quiz-title, .quiz-question{
     font-size:xx-large;
     padding-bottom: 30px;
+}
+.quiz-question{
+    width: 800px;
+    margin: 
 }
 .instruction{
     width: 800px;
