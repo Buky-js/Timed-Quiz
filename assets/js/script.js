@@ -72,17 +72,21 @@ function displayQuestion(questionIndex){
     questionBox.style.display = "block";
     questionBox.appendChild(highscore);
     questionBox.appendChild(timer);
-    // var firstQuestion = document.createElement("div");
-    // firstQuestion.setAttribute("class", "quiz-question");
-    // questionBox.appendChild(firstQuestion);
-    quizQuestion.textContent = questions[questionIndex].question;
+    firstQuestion = document.createElement("div");
+    firstQuestion.setAttribute("class", "quiz-question");
+    questionBox.appendChild(firstQuestion);
+    firstQuestion.textContent = questions[questionIndex].question;
 }
 
 function displayOptions(){
-    var option = document.createElement("button");
-    option.setAttribute("class", "options");
-    questionBox.appendChild(option);
-    option.textContent = questions[questionIndex].option1;
+    var options = document.createElement("div");
+    options.setAttribute("class", "options");
+    questionBox.appendChild(options);
+    var firstChoice = document.createElement("button");
+    firstChoice.setAttribute("class", "buttons");
+    options.appendChild(firstChoice);
+    firstChoice.innerHTML = "blue";
+//     option.textContent = questions[questionIndex].option1;
 }
 
 

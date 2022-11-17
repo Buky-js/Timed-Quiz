@@ -27,8 +27,8 @@ display: none;
     padding: 20px;
     font-size: 20px;
 }
-.quiz-box, .quiz-question{
-    text-align: center;
+.quiz-box{
+    text-align:center;
     padding-top: 100px;
 }
 .quiz-title, .quiz-question{
@@ -37,6 +37,8 @@ display: none;
 }
 .quiz-question{
     width: 800px;
+    text-align:left;
+    padding-top: 100px;
     
 }
 .instruction{
@@ -58,6 +60,19 @@ display: none;
     padding-top: 150px;
     font-size: 50px;
 }
-.option-list{
+.options{
+text-align: left;
+padding-left: 197px;
+}
 
+.buttons{
+    width: 200px;
+    height: 50px;
+    background-color: purple;
+    font-size: 30px;
+    color: white;
+    text-align: left;
+    padding-left: 10px;
+    border-radius: 10px;
+    
 }
