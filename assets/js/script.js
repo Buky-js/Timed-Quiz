@@ -10,6 +10,9 @@ var startBox = document.querySelector(".start-box");
 var quizBox = document.querySelector(".quiz-box");
 var quizQuestion = document.querySelector(".quiz-question");
 var options;
+// var footer = document.querySelector(".confirmation");
+// var answerCorrect = document.querySelector(".correct");
+// var answerWrong = document.querySelector(".wrong");
 
 var questions = [
     {
@@ -107,21 +110,37 @@ for(var i = 0; i<4; i++){
 }
 options = document.querySelector(".options");
 var allOptions = options.querySelectorAll(".buttons");
-console.log(allOptions[1]);
+// console.log(allOptions[1]);
    for(var i=0; i<allOptions.length; i++){
         // console.log(allOptions[i]);
         allOptions[i].addEventListener("click", function(event){
            
             if(event.target.textContent == questions[questionIndex].answer){
-                alert("correct!");
+                // answerCorrect.style.display = "block";
+                var correctAnswer = document.createElement("div");
+                correctAnswer.setAttribute("class", "correct");
+                questionBox.appendChild(correctAnswer);
+                correctAnswer.textContent = "Correct!";
+            }else{
+                var wrongAnswer = document.createElement("div");
+                wrongAnswer.setAttribute("class", "correct");
+                questionBox.appendChild(wrongAnswer);
+                wrongAnswer.textContent = "Wrong!";
+                deductTimer();
+
             }
+
         });
         
     }
 
     //     option.textContent = questions[questionIndex].option1;
 }
-
+function deductTimer(){
+    var currentTime = parseInt(time.textContent);
+    time.textContent = currentTime -10;
+   
+}
 function selectAnswer(){
    
     // console.log("Hello");

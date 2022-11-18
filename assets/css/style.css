@@ -84,3 +84,12 @@ display: none;
 .buttons:hover{
     background-color: #EEB5EB;
 }
+.correct{
+    height: 50px;
+    text-align: left;
+    border-top: 1px solid lightgrey;
+    margin-top: 20px;
+    margin-left: 198px;
+    font-size: 30px;
+    color: lightgrey;
+}
