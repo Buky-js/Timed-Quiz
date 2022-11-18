@@ -10,6 +10,12 @@ var startBox = document.querySelector(".start-box");
 var quizBox = document.querySelector(".quiz-box");
 var quizQuestion = document.querySelector(".quiz-question");
 var options;
+var counter;
+var firstQuestion;
+var fourOptions;
+var allOptions;
+var correctAnswer;
+var wrongAnswer;
 // var footer = document.querySelector(".confirmation");
 // var answerCorrect = document.querySelector(".correct");
 // var answerWrong = document.querySelector(".wrong");
@@ -31,20 +37,20 @@ var questions = [
             "Unity Speaks Again",
             "Umbrella State in America",
             "United States of America",
-            "Unspoken Sayings of America"
+            "Undue Sayings of America"
         ],
         answer: "United States of America"
 
     },
     {
         question: "What season do we have in January",
-        options:[
+        options: [
             "summer",
             "winter",
             "spring",
             "fall"
         ],
-       answer: "winter"
+        answer: "winter"
 
     },
     {
@@ -56,7 +62,7 @@ var questions = [
             "Saskatchewan"
         ],
         answer: "Ohio"
-       
+
     },
     {
         question: "Which animal is the fastest?",
@@ -66,13 +72,13 @@ var questions = [
             "giraffe",
             "horse"
         ],
-       answer: "cheetah"
+        answer: "cheetah"
 
     }
 ]
 
 function setTimer() {
-    var counter = setInterval(function () {
+    counter = setInterval(function () {
         timeLeft--;
         time.textContent = timeLeft;
         if (timeLeft === 0) {
@@ -93,56 +99,95 @@ function displayQuestion(questionIndex) {
     firstQuestion.setAttribute("class", "quiz-question");
     questionBox.appendChild(firstQuestion);
     firstQuestion.textContent = questions[questionIndex].question;
-}
-
-function displayOptions() {
-   
 
     options = document.createElement("div");
     options.setAttribute("class", "options");
     questionBox.appendChild(options);
 
-for(var i = 0; i<4; i++){
-    var firstChoice = document.createElement("button");
-    firstChoice.setAttribute("class", "buttons");
-    options.appendChild(firstChoice);
-    firstChoice.innerHTML = questions[questionIndex].options[i];
+    for (var i = 0; i < 4; i++) {
+        var firstChoice = document.createElement("button");
+        firstChoice.setAttribute("class", "buttons");
+        options.appendChild(firstChoice);
+        firstChoice.innerHTML = questions[questionIndex].options[i];
+    }
 }
-options = document.querySelector(".options");
-var allOptions = options.querySelectorAll(".buttons");
-// console.log(allOptions[1]);
-   for(var i=0; i<allOptions.length; i++){
+
+function confirmAnswer(questionIndex) {
+    fourOptions = document.querySelector(".options");
+    allOptions = fourOptions.querySelectorAll(".buttons");
+    // console.log(allOptions[1]);
+    for (var i = 0; i < allOptions.length; i++) {
         // console.log(allOptions[i]);
-        allOptions[i].addEventListener("click", function(event){
-           
-            if(event.target.textContent == questions[questionIndex].answer){
+        allOptions[i].addEventListener("click", function (event) {
+
+            if (event.target.textContent == questions[questionIndex].answer) {
                 // answerCorrect.style.display = "block";
-                var correctAnswer = document.createElement("div");
+                correctAnswer = document.createElement("div");
                 correctAnswer.setAttribute("class", "correct");
                 questionBox.appendChild(correctAnswer);
                 correctAnswer.textContent = "Correct!";
-            }else{
-                var wrongAnswer = document.createElement("div");
+                questionBox.removeChild(firstQuestion);
+                questionBox.removeChild(options);
+                questionBox.removeChild(correctAnswer);
+                setTimeout(function () {
+                    questionBox.removeChild(firstQuestion);
+                    questionBox.removeChild(options);
+                    questionBox.removeChild(wrongAnswer);
+                    displayQuestion(1);
+                }, 1000);
+            } else {
+                wrongAnswer = document.createElement("div");
                 wrongAnswer.setAttribute("class", "correct");
                 questionBox.appendChild(wrongAnswer);
                 wrongAnswer.textContent = "Wrong!";
                 deductTimer();
+                setTimeout(function () {
+                    questionBox.removeChild(firstQuestion);
+                    questionBox.removeChild(options);
+                    questionBox.removeChild(wrongAnswer);
+                    displayQuestion(1);
+                }, 1000);
+                // questionBox.removeChild(firstQuestion);
+                // questionBox.removeChild(options);
+                // questionBox.removeChild(wrongAnswer);
+                // firstQuestion.textContent = "";
+                // allOptions.innerHTML = "";
+
+
 
             }
-
+            
         });
-        
+
     }
 
     //     option.textContent = questions[questionIndex].option1;
 }
-function deductTimer(){
+
+// function clearQuestionbox(){
+//     questionBox.removeChild(firstQuestion);
+//     questionBox.removeChild(options);
+// }
+
+function deductTimer() {
     var currentTime = parseInt(time.textContent);
-    time.textContent = currentTime -10;
-   
+    currentTime = currentTime - 10;
+    // console.log(currentTime--);
+    var count = setInterval(function () {
+
+        currentTime--;
+        time.textContent = currentTime;
+        clearInterval(counter);
+        if (currentTime === 0) {
+            clearInterval(count);
+        }
+    }, 1000);
+
+
+
 }
-function selectAnswer(){
-   
+function selectAnswer() {
+
     // console.log("Hello");
 }
 // var questionEl = document.createElement("div");
@@ -155,5 +200,5 @@ function selectAnswer(){
 btn.addEventListener("click", () => {
     setTimer();
     displayQuestion(0);
-    displayOptions();
+    confirmAnswer(0);
 });
