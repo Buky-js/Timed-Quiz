@@ -4,19 +4,35 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     /* max-width: 100%; */
 }
-.start-box, .question-box{
+.start-box{
     
   
     width: 1200px ;
-    height: 500px;
+    height: 750px;
     border: 2px solid blue;
     margin-top: 100px;
     border-radius: 20px;
 }
 .question-box{
-display: none;
+    width: 1200px;
+    height: 400px;
+    border: 2px solid blue;
+    margin-top: 100px;
+    border-radius: 20px;
+}
 
-    
+
+.question-box, .checkAnswer{
+    display: none;
+}
+.checkAnswer{
+    height: 50px;
+    text-align: left;
+    border-top: 1px solid lightgrey;
+    margin-top: 20px;
+    margin-left: 198px;
+    font-size: 30px;
+    color: lightgrey;
 }
 .highscore{
     float: left;
@@ -36,10 +52,12 @@ display: none;
     font-size:xx-large;
     padding-bottom: 30px;
 }
-.quiz-question{
-    width: 800px;
-    text-align:left;
-    padding-top: 100px;
+.question{
+    width: 1200px;
+    text-align: center;
+    padding-top: 0px;
+    margin: 0 0 30px 0px;
+    font-size: 40px;
     
 }
 .instruction{
@@ -72,8 +90,13 @@ display: none;
     text-align: left;
     margin: 0 0 0 198px;
 }
-
-.buttons{
+.choicesEl{
+    display: flex;
+    list-style-type: none;
+    flex-direction: column;
+    align-items: baseline;
+}
+.option{
     width: 400px;
     height: 50px;
     background-color: purple;
