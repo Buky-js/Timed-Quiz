@@ -47,11 +47,17 @@ display: none;
     font-size: 20px;
     padding-bottom: 50px;
 }
-.btn{
+#btn{
     font-size: 30px;
     padding: 10px;
     border-radius: 10px;
     cursor: pointer;
+    width: 200px;
+    background-color: purple;
+    border: 0;
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
 }
 .hide{
     display: none;
