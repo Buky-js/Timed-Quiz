@@ -80,6 +80,10 @@ var completed = document.querySelector(".completed-box");
 var finalScore = document.querySelector("#finalscore");
 var initialValue = document.querySelector("#initialValue");
 var highScore = document.querySelector(".highscore-box");
+var highScoreList = document.querySelector("#highscore-list");
+var submitButton = document.querySelector("#submitButton");
+var initialsForm = document.querySelector("#initials-form");
+var scoresList = [];
 
 function timerCountdown(){
     counter = setInterval(function(){
@@ -175,41 +179,92 @@ function gameOver(){
 //     quizBox.appendChild(gameoverDisplay);
 }
 // provide initials and store high score in local storage
-function storeHighScore(event){
+function createHighScore(event){
     event.preventDefault();
     if (initialValue.value== ""){
         alert("Please enter your initials")
         return;
     }
-    completed.style.display = "none";
-    timer.style.display = "none";
-    highScore.style.display = "block";
-    var savedScore = localStorage.getItem("highScore");
-    var scoresList;
-    if(savedScore=== null){
-        scoresList= [];
-    }else{
-        scoresList= JSON.parse[savedScore];
-    }
+    // initialsForm.reset();
+    // completed.style.display = "none";
+    // timer.style.display = "none";
+    // highScore.style.display = "block";
+    // var savedScore = localStorage.getItem("highScore");
+    // var scoresList;
     var playerScore = {
         initials: initialValue.value,
         mark: finalScore.textContent
 
-    }
-    scoresList.push(playerScore);
-    var scorelistToString = JSON.stringify(scoresList);
-    window.localStorage.setItem("highScore", scorelistToString);
-    showHighScore();
+    };
+scoresList.push(playerScore);
 
+scoresList.sort(function(a,b){return b - a});
+console.log(scoresList);
+for (var i=0; i<scoresList.length; i++){
+    var highscoreEl = document.createElement("li");
+    highscoreEl.setAttribute("class", "high-score");
+    highscoreEl.innerHTML = scoresList[i].initials + " - " + scoresList[i].mark;
+    highScoreList.appendChild(highscoreEl);
 }
+saveHighScore();
+displayHighscore();
+}
+// save highscore
 
+    // if(savedScore=== null){
+    //     scoresList= [];
+    // }else{
+    //     scoresList= JSON.parse[savedScore];
+    // }
+    // //console.log(scoresList);
+   
+    // // console.log(playerScore);
+    // scoresList.push(playerScore);
+    // console.log(scoresList);
+    // var scorelistToString = JSON.stringify(scoresList);
+    // window.localStorage.setItem("highScore", scorelistToString);
+    // showHighScore();
+
+
+// this shows the high score
+function saveHighScore(){
+    localStorage.setItem("highscores", JSON.stringify(scoresList));
+}
+//load high score
 function showHighScore(){
-    completed.style.display = "none";
-    timer.style.display = "none";
-    highScore.style.display = "block";
-    var savedScore = localStorage.getItem("highScore");
-    if(savedScore === null){
-        return;
+    var storedHighscore = localStorage.getItem("highscores");
+    if(!storedHighscore){
+        // return false
+       
     }
-
+    storedHighscore = JSON.parse(storedHighscore);
+    storedHighscore.sort(function(a,b){return b - a});
+    for (var i=1; i<storedHighscore.length; i++){
+        var highscoreEl = document.createElement("li");
+        highscoreEl.className = "high-score";
+        highscoreEl.innerHTML = storedHighscore[i].initials + " - " + storedHighscore[i].mark;
+        console.log(highscoreEl.innerHTML);
+        highScoreList.appendChild(highscoreEl);
+    }
+//     completed.style.display = "none";
+//     timer.style.display = "none";
+//     highScore.style.display = "block";
+//     var savedScore = localStorage.getItem("highScore");
+//     if(savedScore === null){
+//         return;
+//     }
+//     var storedHighscore = JSON.parse(savedScore);
+// for(var i=1; i < storedHighscore; i++){
+//     var newHighScore = document.createElement("p");
+//     newHighScore.innerHTML = storeHighScore[i].initials + ": " + storedHighscore[i].mark;
+//     highScoreList.appendChild(newHighScore);
+// }
 }
+function displayHighscore(){
+highScore.style.display = "block";
+completed.style.display = "none";
+}
+showHighScore();
+initialsForm.addEventListener("submit", function(event){ 
+    createHighScore(event);
+});
