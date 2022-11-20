@@ -57,7 +57,7 @@ var questions = [
 ]
 //var time = document.querySelector(".time");
 var timer = document.querySelector(".timer");
-var startButton = document.querySelector("#btn");
+var startButton = document.querySelector(".btn");
 var startBox = document.querySelector(".start-box");
 var quizBox = document.querySelector(".quiz-box");
 var questionBox = document.querySelector(".question-box");
@@ -84,6 +84,9 @@ var highScoreList = document.querySelector("#highscore-list");
 var submitButton = document.querySelector("#submitButton");
 var initialsForm = document.querySelector("#initials-form");
 var scoresList = [];
+var gobackBtn = document.querySelector("#go-back");
+var clearHighscores = document.querySelector("#clear-highscores");
+var highscoreEl;
 
 function timerCountdown(){
     counter = setInterval(function(){
@@ -108,7 +111,9 @@ timer.textContent = "Time up!";
 }
 
 function startQuiz(){
-    quizBox.innerHTML = "";
+    // quizBox.innerHTML = "";
+    //timer.style.display = "block";
+    quizBox.style.display = "none";
     questionBox.style.display = "block";
     // questionNum = 0;
     timerCountdown();
@@ -234,13 +239,13 @@ function saveHighScore(){
 function showHighScore(){
     var storedHighscore = localStorage.getItem("highscores");
     if(!storedHighscore){
-        // return false
+        return false
        
     }
     storedHighscore = JSON.parse(storedHighscore);
     storedHighscore.sort(function(a,b){return b - a});
     for (var i=1; i<storedHighscore.length; i++){
-        var highscoreEl = document.createElement("li");
+        highscoreEl = document.createElement("li");
         highscoreEl.className = "high-score";
         highscoreEl.innerHTML = storedHighscore[i].initials + " - " + storedHighscore[i].mark;
         console.log(highscoreEl.innerHTML);
@@ -265,6 +270,19 @@ highScore.style.display = "block";
 completed.style.display = "none";
 }
 showHighScore();
-initialsForm.addEventListener("submit", function(event){ 
-    createHighScore(event);
-});
+
+function clearScore(event){
+    event.preventDefault();
+//     // highScoreList.style.display = "none";
+//     // localStorage.clear();
+    scoresList = [];
+}
+initialsForm.addEventListener("submit", createHighScore);
+gobackBtn.addEventListener("click", function(event){
+event.preventDefault();
+    highScore.style.display = "none";
+    quizBox.style.display = "block";
+    location.reload();
+    // timer.style.display = "none";
+})
+clearHighscores.addEventListener("click", clearScore);
