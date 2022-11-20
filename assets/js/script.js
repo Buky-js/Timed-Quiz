@@ -76,8 +76,10 @@ var option4 = document.querySelector("#option4");
 var checkAnswer = document.querySelector(".checkAnswer");
 var allOptionButtons = document.querySelectorAll(".option");
 var done = document.querySelector("#done");
-var completed = document.querySelector(".completed-box")
-
+var completed = document.querySelector(".completed-box");
+var finalScore = document.querySelector("#finalscore");
+var initialValue = document.querySelector("#initialValue");
+var highScore = document.querySelector(".highscore-box");
 
 function timerCountdown(){
     counter = setInterval(function(){
@@ -91,8 +93,9 @@ function timerCountdown(){
 
             
         }else if(questionCount>=questions.length+1){
+            clearInterval(counter);
             gameOver();
-clearInterval(counter);
+
 timer.textContent = "Time up!";
         }
        
@@ -163,10 +166,50 @@ for (var i=0; i<allOptionButtons.length; i++){
 function gameOver(){
     questionBox.style.display = "none";
     completed.style.display = "block";
+    finalScore.textContent = score ;
 
 //     timer.innerHTML = "";
 //     var gameoverDisplay = document.createElement("h1");
 //     gameoverDisplay.setAttribute("id", "gameover");
 //     gameoverDisplay.textContent = "Game Over!";
 //     quizBox.appendChild(gameoverDisplay);
+}
+// provide initials and store high score in local storage
+function storeHighScore(event){
+    event.preventDefault();
+    if (initialValue.value== ""){
+        alert("Please enter your initials")
+        return;
+    }
+    completed.style.display = "none";
+    timer.style.display = "none";
+    highScore.style.display = "block";
+    var savedScore = localStorage.getItem("highScore");
+    var scoresList;
+    if(savedScore=== null){
+        scoresList= [];
+    }else{
+        scoresList= JSON.parse[savedScore];
+    }
+    var playerScore = {
+        initials: initialValue.value,
+        mark: finalScore.textContent
+
+    }
+    scoresList.push(playerScore);
+    var scorelistToString = JSON.stringify(scoresList);
+    window.localStorage.setItem("highScore", scorelistToString);
+    showHighScore();
+
+}
+
+function showHighScore(){
+    completed.style.display = "none";
+    timer.style.display = "none";
+    highScore.style.display = "block";
+    var savedScore = localStorage.getItem("highScore");
+    if(savedScore === null){
+        return;
+    }
+
 }

@@ -13,7 +13,7 @@
     margin-top: 100px;
     border-radius: 20px;
 }
-.question-box{
+.question-box, .completed-box{
     width: 1200px;
     height: 400px;
     border: 2px solid blue;
@@ -22,7 +22,7 @@
 }
 
 
-.question-box, .checkAnswer, .completed-box{
+.question-box, .checkAnswer, .completed-box, .highscore-box{ 
     display: none;
 }
 .checkAnswer{
@@ -52,7 +52,7 @@
     font-size:xx-large;
     padding-bottom: 30px;
 }
-.question{
+.question, #done, #lastscore{
     width: 1200px;
     text-align: center;
     padding-top: 0px;
@@ -60,11 +60,37 @@
     font-size: 40px;
     
 }
+#form{
+    display: block;
+    padding-left: 350px;
+    font-size: 25px;
+}
+#lastscore{
+    font-size: 25px;
+}
+#initialValue{
+    display: inline-block;
+}
 .instruction{
     width: 800px;
     font-size: 20px;
     padding-bottom: 50px;
 }
+
+#submitButton{
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    /* cursor: pointer; */
+    width: 100px;
+    background-color: purple;
+    border: 0;
+    border-radius: 10px;
+    /* cursor: pointer; */
+    color: white;
+    margin-left: 8px;
+}
+
 #btn{
     font-size: 30px;
     padding: 10px;
