@@ -37,6 +37,7 @@
 }
 .checkAnswer{
     height: 50px;
+    width: 700px;
     text-align: left;
     border-top: 1px solid lightgrey;
     margin-top: 20px;
