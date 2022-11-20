@@ -271,11 +271,12 @@ completed.style.display = "none";
 }
 showHighScore();
 
-function clearScore(event){
-    event.preventDefault();
+function clearScore(){
+    
 //     // highScoreList.style.display = "none";
-//     // localStorage.clear();
+   
     scoresList = [];
+    localStorage.clear();
 }
 initialsForm.addEventListener("submit", createHighScore);
 gobackBtn.addEventListener("click", function(event){
