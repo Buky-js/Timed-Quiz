@@ -22,7 +22,7 @@
 }
 
 
-.question-box, .checkAnswer{
+.question-box, .checkAnswer, .completed-box{
     display: none;
 }
 .checkAnswer{

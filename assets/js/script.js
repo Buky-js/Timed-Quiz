@@ -75,7 +75,8 @@ var option3 = document.querySelector("#option3");
 var option4 = document.querySelector("#option4");
 var checkAnswer = document.querySelector(".checkAnswer");
 var allOptionButtons = document.querySelectorAll(".option");
-
+var done = document.querySelector("#done");
+var completed = document.querySelector(".completed-box")
 
 
 function timerCountdown(){
@@ -86,7 +87,13 @@ function timerCountdown(){
             clearInterval(counter);
             gameOver();
             timer.textContent = "Time up!";
+            done.textContent = "All Done!";
+
             
+        }else if(questionCount>=questions.length+1){
+            gameOver();
+clearInterval(counter);
+timer.textContent = "Time up!";
         }
        
     }, 1000);
@@ -117,6 +124,9 @@ questionNum = x;
 function confirmAnswer(event){
 
 checkAnswer.style.display = "block";
+setTimeout(function(){
+    checkAnswer.style.display = "none";
+}, 1000);
 // console.log(event.target.textContent);
 if(questions[questionNum].answer == event.target.textContent){
     event.preventDefault();
@@ -127,18 +137,23 @@ if(questions[questionNum].answer == event.target.textContent){
     timeLeft -= 10;
     checkAnswer.textContent = "Wrong! The correct answer is " + questions[questionNum].answer + " .";
 }
-setTimeout(function(){
-    checkAnswer.style.display = "none";
-}, 1000);
+// setTimeout(function(){
+//     checkAnswer.style.display = "none";
+// }, 1000);
 
 
-if (questionNum < questions.length){
+if (questionNum < questions.length - 1){
     questionNum++;
     displayQuestions(questionNum);
-}else{
-    gameOver();
+}else {
+
+gameOver();
 }
+//  else{
+//     displayQuestions(questionNum);
+// }
 questionCount++;
+
 }
 
 for (var i=0; i<allOptionButtons.length; i++){
@@ -146,10 +161,12 @@ for (var i=0; i<allOptionButtons.length; i++){
 }
 
 function gameOver(){
-    quizBox.innerHTML = "";
-    timer.innerHTML = "";
-    var gameoverDisplay = document.createElement("h1");
-    gameoverDisplay.setAttribute("id", "gameover");
-    gameoverDisplay.textContent = "Game Over!";
-    quizBox.appendChild(gameoverDisplay);
+    questionBox.style.display = "none";
+    completed.style.display = "block";
+
+//     timer.innerHTML = "";
+//     var gameoverDisplay = document.createElement("h1");
+//     gameoverDisplay.setAttribute("id", "gameover");
+//     gameoverDisplay.textContent = "Game Over!";
+//     quizBox.appendChild(gameoverDisplay);
 }
