@@ -10,55 +10,65 @@
 </head>
 
 <body>
+
     <section class="start-box">
+        <!-- container for the quiz app -->
         <p class="highscore">View highscores</p>
         <p class="timer"></p>
         <div class="quiz-box">
             <h1 class="quiz-title">Coding Quiz Challenge</h1>
             <p class="instruction">Try to answer the following questions within the allotted time.Keep in mind that
                 incorrect answers will penalise youre score by 10 seconds!</p>
-                
+
             <button class="btn">Start quiz</button>
 
         </div>
         <section class="question-box">
-        <p class="question"></p>
-        <ul class="choicesEl">
-            <li><button class="option" id="option1"></button></li>
-            <li><button class="option" id="option2"></button></li>
-            <li><button class="option" id="option3" ></button></li>
-            <li><button class="option" id="option4"></button></li>
-        </ul>
-        <div class="checkAnswer"></div>
+            <!-- container for each question and options -->
+            <p class="question"></p>
+            <ul class="choicesEl">
+                <li><button class="option" id="option1"></button></li>
+                <li><button class="option" id="option2"></button></li>
+                <li><button class="option" id="option3"></button></li>
+                <li><button class="option" id="option4"></button></li>
+            </ul>
+
+            <!-- container to display whether question is wrong or correct -->
+            <div class="checkAnswer"></div>
         </section>
+
+        <!-- container to display final score -->
         <section class="completed-box">
             <div>
                 <p id="done">All done!</p>
                 <p id="lastscore">Your final score is <span id="finalscore"></span></p>
-                <div id="form" >
-                    <form id="initials-form" >
-                        <p>Enter your initials: <input id="initialValue" type="text"><button id="submitButton" type="submit">Submit</button></p>
-                        
+
+                <!-- form to enter and submit initials -->
+                <div id="form">
+                    <form id="initials-form">
+                        <p>Enter your initials: <input id="initialValue" type="text"><button id="submitButton"
+                                type="submit">Submit</button></p>
+
                     </form>
                     <p>
-        
+
                     </p>
                 </div>
-               
+
             </div>
         </section>
         <section class="highscore-box">
-        <h1>High Scores</h1>
-        <ul id="highscore-list"></ul>
+            <h1>High Scores</h1>
+            <ul id="highscore-list"></ul>
             <div>
                 <button class="btn" id="go-back">Go back</button>
                 <button class="btn" id="clear-highscores">Clear highscores</button>
             </div>
+        </section>
     </section>
-    </section>
-    
-    
-    
+
+
+
     <script src="./assets/js/script.js"></script>
 </body>
 

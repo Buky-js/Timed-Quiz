@@ -2,40 +2,51 @@
     box-sizing: border-box;
     margin: 0 auto;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    /* max-width: 100%; */
+
 }
-.start-box{
-    
-  
-    width: 1200px ;
+
+/* The first box displayed */
+.start-box {
+
+
+    width: 1200px;
     height: 750px;
     border: 2px solid purple;
     margin-top: 100px;
     border-radius: 20px;
 }
-.question-box, .completed-box{
+
+/* question/options and final score boxes */
+.question-box,
+.completed-box {
     width: 1200px;
     height: 400px;
-    /* border: 2px solid blue; */
     margin-top: 100px;
     border-radius: 20px;
 }
 
 
-.question-box, .checkAnswer, .completed-box, .highscore-box{ 
+.question-box,
+.checkAnswer,
+.completed-box,
+.highscore-box {
     display: none;
 }
-.highscore-box{
+
+.highscore-box {
     padding-top: 40px;
     font-size: 30px;
     text-align: center;
 }
-#highscore-list{
+
+#highscore-list {
     list-style-type: none;
     padding-top: 20px;
     padding-bottom: 30px;
 }
-.checkAnswer{
+
+/* the box that shows status of option selected */
+.checkAnswer {
     height: 50px;
     width: 700px;
     text-align: left;
@@ -45,96 +56,105 @@
     font-size: 30px;
     color: lightgrey;
 }
-.highscore{
+
+.highscore {
     float: left;
     padding: 20px;
     font-size: 20px;
 }
-.timer{
+
+.timer {
     float: right;
     padding: 20px;
     font-size: 20px;
 }
-.quiz-box{
-    text-align:center;
+
+.quiz-box {
+    text-align: center;
     padding-top: 100px;
 }
-.quiz-title, .quiz-question{
-    font-size:xx-large;
+
+.quiz-title,
+.quiz-question {
+    font-size: xx-large;
     padding-bottom: 30px;
 }
-.question, #done, #lastscore{
+
+.question,
+#done,
+#lastscore {
     width: 1200px;
     text-align: center;
     padding-top: 0px;
     margin: 0 0 30px 0px;
     font-size: 40px;
-    
+
 }
-#form{
+
+#form {
     display: block;
     padding-left: 350px;
     font-size: 25px;
 }
-#lastscore{
+
+#lastscore {
     font-size: 25px;
 }
-#initialValue{
+
+#initialValue {
     display: inline-block;
 }
-.instruction{
+
+.instruction {
     width: 800px;
     font-size: 20px;
     padding-bottom: 50px;
 }
 
-#submitButton{
+#submitButton {
     font-size: 20px;
     padding: 10px;
     border-radius: 10px;
-    /* cursor: pointer; */
     width: 100px;
     background-color: purple;
     border: 0;
     border-radius: 10px;
-    /* cursor: pointer; */
     color: white;
     margin-left: 8px;
 }
 
-.btn{
+.btn {
     font-size: 25px;
     padding: 10px;
     border-radius: 10px;
     cursor: pointer;
     display: inline-block;
-    /* width: 200px; */
     background-color: purple;
     border: 0;
     border-radius: 10px;
     cursor: pointer;
     color: white;
 }
-.hide{
+
+.hide {
     display: none;
 }
-/* .que-text{
-    text-align: center;
-    padding-top: 150px;
-    font-size: 50px; 
-}*/
-.options{
+
+.options {
     width: 400px;
     text-align: left;
     margin: 0 0 0 198px;
 }
-.choicesEl{
+
+/* container for list of options */
+.choicesEl {
     display: flex;
     list-style-type: none;
     flex-direction: column;
     align-items: baseline;
 }
-.option{
+
+.option {
     width: 400px;
     height: 50px;
     background-color: purple;
@@ -148,10 +168,12 @@
     margin-bottom: 5px;
     display: block;
 }
-.buttons:hover{
+
+.buttons:hover {
     background-color: #EEB5EB;
 }
-.correct{
+
+.correct {
     height: 50px;
     text-align: left;
     border-top: 1px solid lightgrey;
